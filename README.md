@@ -1,4 +1,19 @@
-# Elliptic [![Build Status](https://secure.travis-ci.org/indutny/elliptic.png)](http://travis-ci.org/indutny/elliptic) [![Coverage Status](https://coveralls.io/repos/indutny/elliptic/badge.svg?branch=master&service=github)](https://coveralls.io/github/indutny/elliptic?branch=master) [![Code Climate](https://codeclimate.com/github/indutny/elliptic/badges/gpa.svg)](https://codeclimate.com/github/indutny/elliptic)
+# @unabandoned/elliptic
+
+> A maintained fork of [indutny/elliptic](https://github.com/indutny/elliptic),
+> adopted to fix **CVE-2025-14505 / GHSA-848j-6mx2-7j84**, which upstream lists as
+> affecting every known version with no patched release. Published as
+> [`@unabandoned/elliptic`](https://www.npmjs.com/package/@unabandoned/elliptic);
+> the API is unchanged from upstream.
+>
+> The RFC 6979 nonce was truncated against the width of its own value rather than
+> the width of the generated buffer, so a DRBG output beginning with a zero byte
+> yielded a nonce 128 times too large on curves whose order is not a whole number
+> of bytes (P-521). The signature still verified, which is why it went unnoticed —
+> but it was no longer the RFC 6979 nonce, and an attacker holding both a correct
+> and a faulty signature over one input can recover the private key from the
+> relation between them. See `test/cve-2025-14505-test.js`.
+
 
 [![Saucelabs Test Status](https://saucelabs.com/browser-matrix/gh-indutny-elliptic.svg)](https://saucelabs.com/u/gh-indutny-elliptic)
 
@@ -46,7 +61,7 @@ Fastest is elliptic#ecdh
 ### ECDSA
 
 ```javascript
-var EC = require('elliptic').ec;
+var EC = require('@unabandoned/elliptic').ec;
 
 // Create and initialize EC context
 // (better do it once and reuse it)
@@ -100,7 +115,7 @@ console.log(key.verify(msgHash, signature));
 ### EdDSA
 
 ```javascript
-var EdDSA = require('elliptic').eddsa;
+var EdDSA = require('@unabandoned/elliptic').eddsa;
 
 // Create and initialize EdDSA context
 // (better do it once and reuse it)
@@ -130,7 +145,7 @@ console.log(key.verify(msgHash, signature));
 ### ECDH
 
 ```javascript
-var EC = require('elliptic').ec;
+var EC = require('@unabandoned/elliptic').ec;
 var ec = new EC('curve25519');
 
 // Generate keys
@@ -147,7 +162,7 @@ console.log(shared2.toString(16));
 
 three and more members:
 ```javascript
-var EC = require('elliptic').ec;
+var EC = require('@unabandoned/elliptic').ec;
 var ec = new EC('curve25519');
 
 var A = ec.genKeyPair();

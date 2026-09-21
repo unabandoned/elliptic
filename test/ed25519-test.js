@@ -2,6 +2,7 @@
 'use strict';
 
 var assert = require('assert');
+var { describe, it, before } = require('node:test');
 var elliptic = require('../');
 var utils = elliptic.utils;
 var toArray = elliptic.utils.toArray;
@@ -46,13 +47,14 @@ describe('sign.input ed25519 test vectors', function() {
   var ed25519;
   var lines;
 
-  before(function(done) {
+  before(function() {
+    // Read synchronously: mocha passed `done` as the hook's first argument,
+    // while node:test passes the test context there and the callback second,
+    // so a mocha-style callback hook silently never completes.
     ed25519 = new eddsa('ed25519');
-    require('fs').readFile(__dirname + '/fixtures/sign.input', function(err, f) {
-      lines = f.toString().split('\n');
-      assert.equal(lines.length, expectedTests + 1 /*blank line*/);
-      done();
-    });
+    var f = require('fs').readFileSync(__dirname + '/fixtures/sign.input');
+    lines = f.toString().split('\n');
+    assert.equal(lines.length, expectedTests + 1 /*blank line*/);
   });
 
   function testFactory(i) {

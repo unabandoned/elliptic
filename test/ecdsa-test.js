@@ -2,10 +2,11 @@
 'use strict';
 
 var assert = require('assert');
+var { describe, it, beforeEach } = require('node:test');
 var elliptic = require('../');
 var Signature = require('../lib/elliptic/ec/signature');
 var BN = require('bn.js');
-var hash = require('hash.js');
+var hash = require('@unabandoned/hash.js');
 
 var entropy = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -64,8 +65,10 @@ describe('ECDSA', function() {
       });
 
       it('should have `signature.s <= keys.ec.nh`', function() {
-        // key.sign(msg, options)
-        var sign = keys.sign('hello', { canonical: true });
+        // key.sign(msg, options). The message is a hex string, as sign()'s own
+        // assertion requires: 'hello' worked only because bn.js 4 parsed
+        // invalid hex characters into whatever fell out, which bn.js 5 rejects.
+        var sign = keys.sign('deadbeef', { canonical: true });
         assert(sign.s.cmp(keys.ec.nh) <= 0);
       });
 

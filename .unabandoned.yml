@@ -1,0 +1,33 @@
+schema: 1
+
+package: "@unabandoned/elliptic"
+
+upstream:
+  repo: indutny/elliptic
+  reason: >-
+    no release since 2024-11-13, and carrying an unpatched advisory -
+    CVE-2025-14505 lists every known version as affected with no fixed release
+
+summary: >-
+  Elliptic curve cryptography in pure JavaScript - ECDSA and EdDSA signing and
+  verification, ECDH key agreement, and the named curves (secp256k1, the NIST
+  P-curves, ed25519) that go with them.
+
+why-forked: >-
+  It is the last un-owned node under @unabandoned/browserify-sign, and it is the
+  package IT-Tools tore its whole crypto chain out to avoid, because of an
+  advisory upstream has not fixed. Adopted to fix it: the RFC 6979 nonce was
+  truncated against the width of its own value rather than the width of the
+  generated buffer, so a DRBG output with a leading zero byte produced a nonce
+  128 times too large on curves whose order is not a whole number of bytes. The
+  signature still verified, so nothing complained.
+
+status: active
+
+used-by:
+  - consumer: "@unabandoned/browserify-sign"
+    purpose: "ECDSA signing and verification for the EC algorithms."
+  - consumer: "@unabandoned/crypto-browserify"
+    purpose: "Reached through browserify-sign and create-ecdh."
+
+tags: [crypto, ecdsa, eddsa, ecdh, elliptic-curve, security-fix]

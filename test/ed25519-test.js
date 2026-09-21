@@ -2,6 +2,7 @@
 'use strict';
 
 var assert = require('assert');
+var { describe, it } = require('node:test');
 var elliptic = require('../');
 var utils = elliptic.utils;
 var toArray = elliptic.utils.toArray;

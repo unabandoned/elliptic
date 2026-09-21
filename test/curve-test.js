@@ -2,6 +2,7 @@
 'use strict';
 
 var assert = require('assert');
+var { describe, it } = require('node:test');
 var BN = require('bn.js');
 var elliptic = require('../');
 

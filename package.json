@@ -1,5 +1,5 @@
 {
-  "name": "elliptic",
+  "name": "@unabandoned/elliptic",
   "version": "6.6.1",
   "description": "EC cryptography",
   "main": "lib/elliptic.js",
@@ -7,15 +7,12 @@
     "lib"
   ],
   "scripts": {
-    "lint": "eslint lib test",
-    "lint:fix": "npm run lint -- --fix",
-    "unit": "istanbul test _mocha --reporter=spec test/index.js",
-    "test": "npm run lint && npm run unit",
-    "version": "grunt dist && git add dist/"
+    "test": "node --test test/*-test.js",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:indutny/elliptic"
+    "url": "git+https://github.com/unabandoned/elliptic.git"
   },
   "keywords": [
     "EC",
@@ -26,31 +23,19 @@
   "author": "Fedor Indutny <fedor@indutny.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/indutny/elliptic/issues"
+    "url": "https://github.com/unabandoned/elliptic/issues"
   },
-  "homepage": "https://github.com/indutny/elliptic",
+  "homepage": "https://github.com/unabandoned/elliptic#readme",
   "devDependencies": {
-    "brfs": "^2.0.2",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.6.0",
-    "grunt": "^1.2.1",
-    "grunt-browserify": "^5.3.0",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-connect": "^3.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-saucelabs": "^9.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^8.0.1"
+    "@commitlint/cli": "21.2.2",
+    "@commitlint/config-conventional": "21.2.2"
   },
   "dependencies": {
-    "bn.js": "^4.11.9",
-    "brorand": "^1.1.0",
-    "hash.js": "^1.0.0",
-    "hmac-drbg": "^1.0.1",
-    "inherits": "^2.0.4",
-    "minimalistic-assert": "^1.0.1",
-    "minimalistic-crypto-utils": "^1.0.1"
+    "@unabandoned/hash.js": "^1.4.0",
+    "bn.js": "^5.2.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

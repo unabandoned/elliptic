@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/unabandoned/elliptic#readme",
   "devDependencies": {
-    "@commitlint/cli": "21.2.2",
-    "@commitlint/config-conventional": "21.2.2"
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3"
   },
   "dependencies": {
     "@unabandoned/hash.js": "^1.4.0",

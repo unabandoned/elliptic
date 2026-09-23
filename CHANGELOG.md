@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.1](https://github.com/unabandoned/elliptic/compare/elliptic-v7.0.0...elliptic-v7.0.1) (2026-09-23)
+
+
+### Bug Fixes
+
+* stop dev-only commits from cutting releases ([#4](https://github.com/unabandoned/elliptic/issues/4)) ([fea023a](https://github.com/unabandoned/elliptic/commit/fea023a5245af8ff01287d5fdfcf5cf85531bc41))
+
 ## [7.0.0](https://github.com/unabandoned/elliptic/compare/elliptic-v6.6.1...elliptic-v7.0.0) (2026-09-21)
 
 

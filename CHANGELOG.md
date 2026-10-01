@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.0.2](https://github.com/unabandoned/elliptic/compare/elliptic-v7.0.1...elliptic-v7.0.2) (2026-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @unabandoned/hash.js to v1.4.1 ([#11](https://github.com/unabandoned/elliptic/issues/11)) ([6c23159](https://github.com/unabandoned/elliptic/commit/6c23159e83c1f4f51ae6d587fdd0be8e059e6a66))
+* **deps:** update dependency @unabandoned/hash.js to v1.4.2 ([#14](https://github.com/unabandoned/elliptic/issues/14)) ([915b9b0](https://github.com/unabandoned/elliptic/commit/915b9b0a635d02e847eb1474d4a18efbc2c976bd))
+
 ## [7.0.1](https://github.com/unabandoned/elliptic/compare/elliptic-v7.0.0...elliptic-v7.0.1) (2026-09-23)
 
 
